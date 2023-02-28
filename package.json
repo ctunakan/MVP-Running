@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/ctunakan/MVP-Running#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mongoose": "^7.0.0",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
