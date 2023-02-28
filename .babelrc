@@ -1,0 +1,5 @@
+{
+  //[presets] allows us to define the additional packages we would like to include
+  //this will give us access to jsc and several other newer js features
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
