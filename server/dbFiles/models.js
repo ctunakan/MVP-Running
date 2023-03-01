@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 
 let insideSchema = mongoose.Schema({
-  dateCreated: {type: String, required: [true, 'Please add date']},
-  durationMinutes: {type: String, required: [true, 'Please add duration']},
+  dateCreated: {type: String, required: [true, 'Please add date'], index: true, alias: 'date'},
+  durationMinutes: {type: String, required: [true, 'Please add duration'], index: true, alias: 'workoutLength'},
   HKAverageMETs: {type: String, required: false},
   HKElevationAscended: {type: String, required: false},
   HKIndoorWorkout: {type:String, default: '1'},
@@ -22,7 +22,7 @@ let insideSchema = mongoose.Schema({
   HKQuantityTypeIdentifierDistanceWalkingRunning: {
     endDate: {type: String, required: false},
     startDate: {type: String, required: false},
-    sum: {type: String, required: [true, 'Please add distance ran']},
+    sum: {type: String, required: [true, 'Please add distance ran'], index: true, alias: 'distance'},
     unit: {type: String, default: 'mi'}
   },
   HKQuantityTypeIdentifierHeartRate: {
@@ -36,7 +36,7 @@ let insideSchema = mongoose.Schema({
   HKQuantityTypeIdentifierRunningSpeed: {
     endDate: {type: String, required: false},
     startDate: {type: String, required: false},
-    average: {type: String, required: [true, 'Please add average pace']},
+    average: {type: String, required: [true, 'Please add average pace'], index: true, alias: 'pace'},
     maximum: {type: String, required: false},
     minimum: {type: String, required: false},
     unit: {type: String, default: 'mi/hr'},
@@ -51,8 +51,8 @@ let insideSchema = mongoose.Schema({
 })
 
 let outsideSchema = mongoose.Schema({
-  dateCreated: {type: String, required: [true, 'Please add date']},
-  durationMinutes: {type: String, required: [true, 'Please add duration']},
+  dateCreated: {type: String, required: [true, 'Please add date'], index: true, alias: 'date'},
+  durationMinutes: {type: String, required: [true, 'Please add duration'], index: true, alias: 'workoutLength'},
   HKAverageMETs: {type: String, required: false},
   HKElevationAscended: {type: String, required: false},
   HKIndoorWorkout: {type:String, default: '1'},
@@ -71,7 +71,7 @@ let outsideSchema = mongoose.Schema({
   HKQuantityTypeIdentifierDistanceWalkingRunning: {
     endDate: {type: String, required: false},
     startDate: {type: String, required: false},
-    sum: {type: String, required: [true, 'Please add distance ran']},
+    sum: {type: String, required: [true, 'Please add distance ran'], index: true, alias: 'distance'},
     unit: {type: String, default: 'mi'}
   },
   HKQuantityTypeIdentifierHeartRate: {
@@ -85,7 +85,7 @@ let outsideSchema = mongoose.Schema({
   HKQuantityTypeIdentifierRunningSpeed: {
     endDate: {type: String, required: false},
     startDate: {type: String, required: false},
-    average: {type: String, required: [true, 'Please add average pace']},
+    average: {type: String, required: [true, 'Please add average pace'], index: true, alias: 'pace'},
     maximum: {type: String, required: false},
     minimum: {type: String, required: false},
     unit: {type: String, default: 'mi/hr'},

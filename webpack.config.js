@@ -9,7 +9,7 @@ module.exports = {
   // 'production' will be minified
   mode: "development",
   //[entry] is the file where the bundling starts from
-  entry: './src/index.jsx',
+  entry: path.join(__dirname, './src/index.jsx'),
   //[output] is a confirguration object to determine how and where to bundle our code
   output: {
     //[path] is where to output
@@ -36,16 +36,16 @@ module.exports = {
   },
   //[devtool] this is an additional source map that will let the browser know what files are running our code
   //helps with error tracing. without it we will not know where our errors are coming from 
-  //because it will state everything is inside the bundle file
-  devtool: "eval-cheap-module-source-map",
-  //[devServer] configuration for the live server including port
-  devServer: {
-    // [static] config for what to serve
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    compress: true,
-    //[port] what port on our local machine to run the dev server
-    port: process.env.PORT
-  }
+  // //because it will state everything is inside the bundle file
+  // devtool: "eval-cheap-module-source-map",
+  // //[devServer] configuration for the live server including port
+  // devServer: {
+  //   // [static] config for what to serve
+  //   static: {
+  //     directory: path.join(__dirname, 'public'),
+  //   },
+  //   compress: true,
+  //   //[port] what port on our local machine to run the dev server
+  //   port: process.env.PORT
+  // }
 }
