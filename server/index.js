@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const logRequests = require('./requestLogger');
+const db = require('./dbFiles/index');
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(logRequests);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 //build routes
+
+
 
 
 app.listen(process.env.PORT);

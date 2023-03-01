@@ -106,7 +106,7 @@ let outsideSchema = mongoose.Schema({
   }
 })
 
-let Indoor = mongoose.model('Indoor', insideSchema);
-let Outdoor = mongoose.model('Outdoor', outsideSchema);
+let Indoor = mongoose.model('InsideRuns', insideSchema);
+let Outdoor = mongoose.model('OutsideRuns', outsideSchema);
 
 module.exports = { Indoor, Outdoor };
