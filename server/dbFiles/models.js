@@ -23,6 +23,6 @@ let runSchema = new mongoose.Schema({
   }
 });
 
-let Run = mongoose.model('runs', runSchema);
+let Run = mongoose.model('runs', runSchema, 'runs');
 
 module.exports = Run;

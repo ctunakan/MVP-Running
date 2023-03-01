@@ -1,7 +1,7 @@
 const fs = require ('fs');
 const Run = require('./models');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017');
+mongoose.connect('mongodb://localhost:27017/rundb');
 
 const copyFiles = (copyPath) => {
   fs.readFile(copyPath, (err, result) => {

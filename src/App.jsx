@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from './NavBar.jsx';
 import SideBar from './components/SideBar.jsx';
@@ -11,10 +11,26 @@ import { lightTheme, darkTheme } from './styled/Themes.js';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
+  const [mainAvg, setMainAvg] = useState({avgPace: '', avgDistance: ''});
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
   }
+
+  // const mainAvgHelper = (data) => {
+  //   setMainAvg(pre => ({
+  //     ...prev,
+  //     data
+  //   }))
+  // }
+
+  useEffect(() => {
+    axios.get('/averages')
+      .then(data => {
+        setMainAvg(data.data)
+      });
+
+  }, []);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -24,7 +40,7 @@ const App = () => {
         <StyledMain> 
         {/* Main Content to render here */}
         <StyledMainWidget>
-          <HomePage/>
+          <HomePage mainAvg={mainAvg}/>
         </StyledMainWidget>
         <StyledSideBar>
           <SideBar />
