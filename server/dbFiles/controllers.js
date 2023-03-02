@@ -1,8 +1,13 @@
-const Run = require('./models.js').Run;
+const { Run, RunData } = require('./models.js');
 
-const getAll = (optionsObj) => {
+
+const getAllRuns = (optionsObj) => {
   let obj = optionsObj || {};
   return Run.find(obj);
+}
+
+const getMonthAvg = (monthStr) => {
+  return RunData.find({ monthAvg: monthStr});
 }
 
 const getTrends = () => {
@@ -32,5 +37,6 @@ const getTrends = () => {
 }
 
 
-module.exports.getAll = getAll;
+module.exports.getAllRuns = getAllRuns;
 module.exports.getTrends = getTrends;
+module.exports.getMonthAvg = getMonthAvg;

@@ -25,11 +25,12 @@ const App = () => {
   }
 
   useEffect(() => {
-    axios.get('/averages')
+    axios.get('/monthlyAvg')
       .then(data => {
         let avgPace = roundTwoDecimals(data.data.avgPace);
         let avgDistance = roundTwoDecimals(data.data.avgDistance);
-        const rounded = { avgPace, avgDistance };
+        let avgDuration = data.data.avgDuration;
+        const rounded = { avgPace, avgDistance, avgDuration };
         setMainAvg(rounded)
       })
       .then(() => {

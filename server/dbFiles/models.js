@@ -27,7 +27,8 @@ let runDataSchema = new mongoose.Schema({
   avgDistance: Number, // minutes
   avgDuration: Number, // miles
   avgPace: Number, // mph
-  monthAvg: String,
+  count: Number,
+  monthAvg: Date,
 })
 
 let Run = mongoose.model('runs', runSchema, 'runs');

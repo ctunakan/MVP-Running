@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const logRequests = require('./requestLogger');
 const db = require('./dbFiles/index');
-const { getAll, getTrends } = require('./dbFiles/controllers');
+const { getAllRuns, getTrends, getMonthAvg } = require('./dbFiles/controllers');
 const helpers = require('./helpers');
 
 const app = express();
@@ -16,14 +16,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 //build routes
 
-app.get('/averages', (req, res) => {
-  // const queryParams = req.body.params;
-  getAll()
+app.get('/monthlyAvg', (req, res) => {
+  const queryParams = req.body.params || 'feb23';
+  getMonthAvg(queryParams)
     .then(data => {
-      const averages = helpers.averageCalculator(data);
-      // console.log(averages);
+      const { avgDistance, avgDuration, avgPace } = data[0]
+      const averages = { avgDistance, avgDuration, avgPace }; 
       res.send(averages);
-    })
+    });
 })
 
 app.get('/trends', (req, res) => {

@@ -5,23 +5,6 @@ const averageCalculator = require('../helpers').averageCalculator;
 
 mongoose.connect('mongodb://localhost:27017/rundb');
 
-// const getlastMonthData = () => {
-//   const today = new Date();
-//   let newDate = new Date()
-//   let monthAgo = newDate.getMonth() - 1;
-//   newDate.setMonth(monthAgo);
-//   // console.log(today);
-//   // console.log(newDate)
-//   // console.log(Date(dateMonthAgo))
-//   return Run.find({ workoutDate: { $gte: newDate}})
-//     .then(data => {
-//       const averages = averageCalculator(data);
-//       averages.startDate = newDate;
-//       averages.endDate = new Date();
-//       return RunData.create(averages);
-//     });
-// }
-
 const loadMonthAverages = () => {
   return Run.find({})
     .then(data => {
@@ -50,31 +33,57 @@ const loadMonthAverages = () => {
       const dec22 = averageCalculator(data.slice(162, 176))
       const jan23 = averageCalculator(data.slice(176, 192))
       const feb23 = averageCalculator(data.slice(192));
-      jan21.monthAvg = 'jan21';
-      feb21.monthAvg = 'feb21';
-      mar21.monthAvg = 'mar21';
-      apr21.monthAvg = 'apr21';
-      jun21.monthAvg = 'jun21';
-      jul21.monthAvg = 'jul21';
-      aug21.monthAvg = 'aug21';
-      sep21.monthAvg = 'sep21';
-      oct21.monthAvg = 'oct21';
-      nov21.monthAvg = 'nov21';
-      dec21.monthAvg = 'dec21';
-      jan22.monthAvg = 'jan22';
-      feb22.monthAvg = 'feb22';
-      mar22.monthAvg = 'mar22';
-      apr22.monthAvg = 'apr22';
-      may22.monthAvg = 'may22';
-      jun22.monthAvg = 'jun22';
-      jul22.monthAvg = 'jul22';
-      aug22.monthAvg = 'aug22';
-      sep22.monthAvg = 'sep22';
-      oct22.monthAvg = 'oct22';
-      nov22.monthAvg = 'nov22';
-      dec22.monthAvg = 'dec22';
-      jan23.monthAvg = 'jan23';
-      feb23.monthAvg = 'feb23'; 
+      jan21.monthAvg = new Date('01/01/2021');
+      jan21.count = 7;
+      feb21.monthAvg = new Date('02/01/2021');
+      feb21.count = 3;
+      mar21.monthAvg = new Date('03/01/2021');
+      mar21.count = 2;
+      apr21.monthAvg = new Date('04/01/2021');
+      apr21.count = 1;
+      jun21.monthAvg = new Date('06/01/2021');
+      jun21.count = 8;
+      jul21.monthAvg = new Date('07/01/2021');
+      jul21.count = 4
+      aug21.monthAvg = new Date('08/01/2021');
+      aug21.count = 8;
+      sep21.monthAvg = new Date('09/01/2021');
+      sep21.count = 3;
+      oct21.monthAvg = new Date('10/01/2021');
+      oct21.count= 2
+      nov21.monthAvg = new Date('11/01/2021');
+      nov21.count = 4
+      dec21.monthAvg = new Date('12/01/2021');
+      dec21.count = 4
+      jan22.monthAvg = new Date('01/01/2022');
+      jan22.count = 7
+      feb22.monthAvg = new Date('02/01/2022');
+      feb22.count = 5
+      mar22.monthAvg = new Date('03/01/2022');
+      mar22.count = 5
+      apr22.monthAvg = new Date('04/01/2022');
+      apr22.count = 7
+      may22.monthAvg = new Date('05/01/2022');
+      may22.count = 10;
+      jun22.monthAvg = new Date('06/01/2022');
+      jun22.count = 11;
+      jul22.monthAvg = new Date('07/01/2022');
+      jul22.count = 12
+      aug22.monthAvg = new Date('08/01/2022');
+      aug22.count = 16;
+      sep22.monthAvg = new Date('09/01/2022');
+      sep22.count = 15;
+      oct22.monthAvg = new Date('10/01/2022');
+      oct22.count = 16
+      nov22.monthAvg = new Date('11/01/2022');
+      nov22.count = 12
+      dec22.monthAvg = new Date('12/01/2022');
+      dec22.count = 14
+      jan23.monthAvg = new Date('01/01/2023');
+      jan23.count = 16;
+      feb23.monthAvg = new Date('02/01/2023'); 
+      feb23.count = 10;
+
       
       return RunData.create([jan21, feb21, mar21, apr21, jun21, jul21, aug21, sep21, oct21, nov21, dec21,
       jan22, feb22, mar22, apr22, may22, jun22, jul22, aug22, sep22, oct22, nov22, dec22, jan23, feb23]);
