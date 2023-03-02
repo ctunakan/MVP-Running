@@ -18,11 +18,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/averages', (req, res) => {
   // const queryParams = req.body.params;
-  console.log(new Date('2023-01-01'))
-  getAll({workoutDate: { $lte: new Date('2023-01-01')}})
+  getAll()
     .then(data => {
       const averages = helpers.averageCalculator(data);
-      console.log(averages);
+      // console.log(averages);
       res.send(averages);
     })
 })
@@ -30,15 +29,14 @@ app.get('/averages', (req, res) => {
 app.get('/trends', (req, res) => {
   getTrends()
     .then(data => {
-      const averageThreeAgo = helpers.averageCalculator(data[0])
-      const averageTwoAgo = helpers.averageCalculator(data[1])
-      const averageOneAgo = helpers.averageCalculator(data[2])
-      const lastMonth = helpers.averageCalculator(data[3]);
-      console.log('three ago:', averageThreeAgo,
-       'two ago:', averageTwoAgo,
-       'one ago:', averageOneAgo,
-       'past month', lastMonth);
-      res.send('completed')
+      const averageSixAgo = helpers.averageCalculator(data[0])
+      const lastMonth = helpers.averageCalculator(data[1]);
+      // console.log('6 months to today:', averageSixAgo,
+      //  '\npast month', lastMonth);
+      const paceTrend = lastMonth.avgPace - averageSixAgo.avgPace;
+      const distanceTrend = lastMonth.avgDistance - averageSixAgo.avgDistance;
+      const result = { paceTrend, distanceTrend }; 
+      res.send(result)
     });
 })
 

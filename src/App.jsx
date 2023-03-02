@@ -12,23 +12,38 @@ import { lightTheme, darkTheme } from './styled/Themes.js';
 const App = () => {
   const [theme, setTheme] = useState('light');
   const [mainAvg, setMainAvg] = useState({avgPace: '', avgDistance: ''});
+  const [paceTrend, setPaceTrend] = useState ({paceTrendValue: 0, paceTrendUp: false});
+  const [distanceTrend, setDistanceTrend] = useState ({distanceTrendValue: 0, distanceTrendUp: false});
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
   }
 
-  // const mainAvgHelper = (data) => {
-  //   setMainAvg(pre => ({
-  //     ...prev,
-  //     data
-  //   }))
-  // }
+  const roundTwoDecimals = (num) => {
+    let rounded = Math.round(num * 100) / 100;
+    return rounded;
+  }
 
   useEffect(() => {
     axios.get('/averages')
       .then(data => {
-        setMainAvg(data.data)
+        let avgPace = roundTwoDecimals(data.data.avgPace);
+        let avgDistance = roundTwoDecimals(data.data.avgDistance);
+        const rounded = { avgPace, avgDistance };
+        setMainAvg(rounded)
+      })
+      .then(() => {
+        axios.get('/trends')
+          .then(trendData => {
+            const roundedPace = roundTwoDecimals(trendData.data.paceTrend);
+            const roundedDistance = roundTwoDecimals(trendData.data.distanceTrend);
+            const paceUp = roundedPace > 0;
+            const distanceUp = roundedDistance > 0;
+            setPaceTrend({paceTrendValue: roundedPace, paceTrendUp: paceUp});
+            setDistanceTrend({distanceTrendValue: roundedDistance, distanceTrendUp: distanceUp});
+          })
       });
+    
 
   }, []);
 
@@ -40,7 +55,9 @@ const App = () => {
         <StyledMain> 
         {/* Main Content to render here */}
         <StyledMainWidget>
-          <HomePage mainAvg={mainAvg}/>
+          <HomePage mainAvg={mainAvg}
+            paceTrend={paceTrend}
+            distanceTrend={distanceTrend}/>
         </StyledMainWidget>
         <StyledSideBar>
           <SideBar />

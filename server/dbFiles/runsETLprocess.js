@@ -1,5 +1,5 @@
 const fs = require ('fs');
-const Run = require('./models');
+const Run = require('./models').Run;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/rundb');
 

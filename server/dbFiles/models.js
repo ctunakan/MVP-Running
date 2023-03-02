@@ -23,6 +23,15 @@ let runSchema = new mongoose.Schema({
   }
 });
 
-let Run = mongoose.model('runs', runSchema, 'runs');
+let runDataSchema = new mongoose.Schema({
+  avgDistance: Number, // minutes
+  avgDuration: Number, // miles
+  avgPace: Number, // mph
+  monthAvg: String,
+})
 
-module.exports = Run;
+let Run = mongoose.model('runs', runSchema, 'runs');
+let RunData = mongoose.model('runData', runDataSchema, 'runData');
+
+module.exports.Run = Run;
+module.exports.RunData = RunData
