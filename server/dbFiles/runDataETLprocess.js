@@ -42,7 +42,7 @@ const loadMonthAverages = () => {
       apr21.monthAvg = new Date('04/01/2021');
       apr21.count = 1;
       jun21.monthAvg = new Date('06/01/2021');
-      jun21.count = 8;
+      jun21.count = 7;
       jul21.monthAvg = new Date('07/01/2021');
       jul21.count = 4
       aug21.monthAvg = new Date('08/01/2021');
@@ -58,11 +58,11 @@ const loadMonthAverages = () => {
       jan22.monthAvg = new Date('01/01/2022');
       jan22.count = 7
       feb22.monthAvg = new Date('02/01/2022');
-      feb22.count = 5
+      feb22.count = 6
       mar22.monthAvg = new Date('03/01/2022');
-      mar22.count = 5
+      mar22.count = 4
       apr22.monthAvg = new Date('04/01/2022');
-      apr22.count = 7
+      apr22.count = 8
       may22.monthAvg = new Date('05/01/2022');
       may22.count = 10;
       jun22.monthAvg = new Date('06/01/2022');
@@ -78,9 +78,9 @@ const loadMonthAverages = () => {
       nov22.monthAvg = new Date('11/01/2022');
       nov22.count = 12
       dec22.monthAvg = new Date('12/01/2022');
-      dec22.count = 14
+      dec22.count = 16
       jan23.monthAvg = new Date('01/01/2023');
-      jan23.count = 16;
+      jan23.count = 17;
       feb23.monthAvg = new Date('02/01/2023'); 
       feb23.count = 10;
 

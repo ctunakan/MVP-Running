@@ -7,10 +7,14 @@ const copyFiles = (copyPath) => {
   fs.readFile(copyPath, (err, result) => {
     if (err) throw err;
     let runObj = JSON.parse(result);
+    const roundFourDecimals = (num) => {
+      let rounded = Math.round(num * 10000) / 10000;
+      return rounded;
+    }
 
     for (let key in runObj) {
       const dateNum = new Date(runObj[key].dateCreated)
-      const duration = Math.round(Number.parseFloat(runObj[key].durationMinutes));
+      const duration = roundFourDecimals(Number.parseFloat(runObj[key].durationMinutes));
       if (runObj[key].HKElevationAscended !== undefined) {
         var elevation = parseInt(runObj[key].HKElevationAscended);
       } else {
